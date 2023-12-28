@@ -53,7 +53,7 @@ export default function HomePage() {
     marginLeft: 100,
     marginTop: 5,
     marginRight: 5,
-    backgroundColor: "#4e6c50",
+    backgroundColor: "#5ab260",
   });
   /*const[imageStyle,setImage]=useState({
     height:200
@@ -90,7 +90,7 @@ export default function HomePage() {
         display: "inline-block",
         /* borderWidth:2,
          borderStyle:"solid",*/
-        backgroundColor: "#4e6c50",
+        backgroundColor: "#5ab260",
         width: 300,
         marginLeft: 100,
         marginTop: 5,
