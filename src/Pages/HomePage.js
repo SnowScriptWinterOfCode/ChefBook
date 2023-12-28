@@ -145,7 +145,7 @@ export default function HomePage() {
           <Recipe
             key={i}
             title={r.recipe.label}
-            calories={r.recipe.calories}
+            calories={Math.round(r.recipe.calories)}
             img={r.recipe.image}
             url={r.recipe.url}
             ingredients={r.recipe.ingredients}
