@@ -19,7 +19,6 @@ export default function HomePage() {
   } = useRecipe();
   return (
     <div className="App">
-      <Navbar />
       <img
         alt=""
         src={mainLogo}

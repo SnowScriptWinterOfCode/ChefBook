@@ -10,7 +10,7 @@ export default function App() {
     <>
       <Navbar bg="black" variant="dark" expand="lg" className="p-3 sticky-top">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               alt=""
               src={mainLogo}

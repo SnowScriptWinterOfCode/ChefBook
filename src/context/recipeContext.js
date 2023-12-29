@@ -85,11 +85,12 @@ function RecipeProvider({ children }) {
       });
       setCard({
         display: "inline-block",
-        /* borderWidth:2,
-         borderStyle:"solid",*/
+        // borderWidth: 2,
+        // borderStyle: "solid",
         backgroundColor: "#5ab260",
         width: 300,
         marginLeft: 100,
+
         marginTop: 5,
         marginRight: 5,
       });
