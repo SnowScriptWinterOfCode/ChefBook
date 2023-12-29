@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  width: 100%;
+  border: 2px solid black;
+  background-color: rgb(255, 230, 230);
+  height: 100vh;
+  justify-content: space-around;
+}
+
+.container p {
+  position: relative;
+  top: 5.4rem;
+  font-size: 3.5rem;
+  width: 100%;
+  font-weight: 800;
+  border-radius: 29px;
+  background-color: rgba(126, 126, 126, 0.1);
+  text-shadow: 100px 55px 4px rgb(45, 52, 80);
+  text-align: center;
+}
+.buttons {
+  align-items: center;
+
+  flex-flow: column;
+  padding: 3vh;
+  margin-bottom: 6vh;
+  display: flex;
+}
+.btn {
+  background-image: linear-gradient(rgb(116, 205, 98), rgb(125, 240, 200));
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 3rem;
+  font-size: large;
+  font-weight: 500;
+  margin: 2rem;
+}
+
+.timer {
+  border: 4px double grey;
+  margin: 2rem;
+  display: inline-block;
+  border-radius: 200px;
+  padding: 10px 23px;
+  font-size: 2rem;
+}

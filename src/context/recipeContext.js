@@ -1,43 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const RecipeContext = createContext();
+const APP_ID = "d7811cd0";
+const APP_KEY = "3baec572c48af715772e8deac52d7572";
 
 function RecipeProvider({ children }) {
   const [visible, setVisible] = useState(3);
-
-  const showMoreItems = () => {
-    setVisible((prevValue) => prevValue + 3);
-  };
-  const APP_ID = "d7811cd0";
-  const APP_KEY = "3baec572c48af715772e8deac52d7572";
-
-  const getRecipes = () => {
-    fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setRecipes(data.hits);
-        //console.log(data);
-      });
-  };
-
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("bread");
 
-  useEffect(() => {
-    getRecipes();
-  }, [query]);
-
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
-  };
-  const getSearch = (e) => {
-    e.preventDefault();
-    setQuery(search);
+  const showMoreItems = () => {
+    setVisible((prevValue) => prevValue + 3);
   };
 
   const [mode, setMode] = useState("light");
@@ -52,6 +26,32 @@ function RecipeProvider({ children }) {
     marginRight: 5,
     backgroundColor: "#5ab260",
   });
+
+  const getRecipes = () => {
+    fetch(
+      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setRecipes(data.hits);
+        //console.log(data);
+      });
+  };
+
+  useEffect(() => {
+    getRecipes();
+  }, [query]);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+  const getSearch = (e) => {
+    e.preventDefault();
+    setQuery(search);
+  };
+
   /*const[imageStyle,setImage]=useState({
     height:200
     
@@ -85,8 +85,8 @@ function RecipeProvider({ children }) {
       });
       setCard({
         display: "inline-block",
-        // borderWidth: 2,
-        // borderStyle: "solid",
+        borderWidth: 2,
+        borderStyle: "solid",
         backgroundColor: "#5ab260",
         width: 300,
         marginLeft: 100,

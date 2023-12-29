@@ -5,6 +5,7 @@ import Contact from "./Pages/Contact";
 import Navbar from "./components/Navbar";
 import Login from "./Pages/Login";
 import { RecipeProvider } from "./context/recipeContext";
+import PageNotFound from "./Pages/404";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </RecipeProvider>
