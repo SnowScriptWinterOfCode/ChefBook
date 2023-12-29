@@ -1,0 +1,24 @@
+.container {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  border: 2rem solid rgb(25, 45, 23);
+  background-color: rgb(211, 241, 211);
+  justify-content: center;
+  border-top: 0;
+  align-items: center;
+  line-height: 1.9rem;
+}
+.title {
+  line-height: 3.2rem;
+  font-size: 2.8rem;
+}
+.subt {
+  font-size: 1.2rem;
+  line-height: 2.3rem;
+  padding-bottom: 2rem;
+}
+
+.content {
+  font-size: 1rem;
+}
