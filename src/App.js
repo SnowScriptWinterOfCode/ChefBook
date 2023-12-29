@@ -3,7 +3,7 @@ import "./App.css";
 import { useState } from "react";
 import Recipe from "./Recipe";
 import Navbar from "./components/Navbar";
-import mainLogo from'./components/icon.png';
+import mainLogo from "./components/icon.png";
 
 function App() {
   const [visible, setVisible] = useState(3);
@@ -11,6 +11,7 @@ function App() {
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 3);
   };
+  // Use Env Variables for App_ID and APP_KEY
   const APP_ID = "d7811cd0";
   const APP_KEY = "3baec572c48af715772e8deac52d7572";
 
@@ -31,6 +32,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("bread");
 
+  
   useEffect(() => {
     getRecipes();
   }, [query]);
@@ -42,7 +44,6 @@ function App() {
     e.preventDefault();
     setQuery(search);
   };
-
 
   const [mode, setMode] = useState("light");
   const [myStyle, setStyle] = useState({
@@ -103,31 +104,40 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <img alt="" src={mainLogo} width="100" height="100" className="logo" text-align="center"/>
+      <img
+        alt=""
+        src={mainLogo}
+        width="100"
+        height="100"
+        className="logo"
+        text-align="center"
+      />
       <h1 className="heading" style={myStyle}>
         Tasty Tips
       </h1>
       <form onSubmit={getSearch} className="search-form">
-        <input
-          className="search-bar"
-          type="text"
-          value={search}
-          onChange={handleSearch} 
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
+        <div className="search-container">
+          <input
+            className="search-bar"
+            type="text"
+            value={search}
+            onChange={handleSearch}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
                 setSearch(e.target.value);
                 // console.log("search: ", e.target.value)
-            }
-        }}
-        ></input>
-        <button className="search-btn" type="submit">
-          Search
-        </button>
+              }
+            }}
+          ></input>
+          <button className="search-btn" type="submit">
+            Search
+          </button>
+        </div>
       </form>
 
-      <div class="form-check form-switch">
+      <div className="form-check form-switch">
         <input
-          class="form-check-input ms-5"
+          className="form-check-input ms-5"
           type="checkbox"
           role="switch"
           id="flexSwitchCheckDefault"
@@ -153,7 +163,6 @@ function App() {
           Load More Recipes
         </button>
       </div>
-      
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { nanoid } from "nanoid"
 
 
 export default function Recipe(props) {
@@ -211,6 +212,7 @@ export default function Recipe(props) {
           src={props.img}
           style={props.imageStyle}
           className="card-img-top"
+          alt=""
         />
         <div className="card-body">
           <h5 className="card-title" style={props.myStyle}>
@@ -221,7 +223,7 @@ export default function Recipe(props) {
           </p>
           <ol>
             {props.ingredients.map((i) => (
-              <li style={props.myStyle}>{i.text}</li>
+              <li style={props.myStyle} key={nanoid()}>{i.text}</li>
             ))}
           </ol>
           <a
@@ -232,12 +234,12 @@ export default function Recipe(props) {
           >
             See the recipe
           </a>
-          <div class="stars">
-          <FontAwesomeIcon icon={faStar} class="star" onClick={StarClicked} style={starStyle1} id="1"/>
-          <FontAwesomeIcon icon={faStar} class="star" onClick={StarClicked} style={starStyle2} id="2"/>
-          <FontAwesomeIcon icon={faStar} class="star" onClick={StarClicked} style={starStyle3} id="3"/>
-          <FontAwesomeIcon icon={faStar} class="star" onClick={StarClicked} style={starStyle4} id="4"/>
-          <FontAwesomeIcon icon={faStar} class="star" onClick={StarClicked} style={starStyle5} id="5"/>
+          <div className="stars">
+          <FontAwesomeIcon icon={faStar} className="star" onClick={StarClicked} style={starStyle1} id="1"/>
+          <FontAwesomeIcon icon={faStar} className="star" onClick={StarClicked} style={starStyle2} id="2"/>
+          <FontAwesomeIcon icon={faStar} className="star" onClick={StarClicked} style={starStyle3} id="3"/>
+          <FontAwesomeIcon icon={faStar} className="star" onClick={StarClicked} style={starStyle4} id="4"/>
+          <FontAwesomeIcon icon={faStar} className="star" onClick={StarClicked} style={starStyle5} id="5"/>
      
           </div>
         </div>
