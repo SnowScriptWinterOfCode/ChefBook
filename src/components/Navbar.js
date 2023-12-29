@@ -1,11 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import mainLogo from "./icon.png";
 import { Link } from "react-router-dom";
 
-export default function App() {
+function App() {
   return (
     <>
       <Navbar bg="black" variant="dark" expand="lg" className="p-3 sticky-top">
@@ -47,3 +47,5 @@ export default function App() {
     </>
   );
 }
+
+export default memo(App);

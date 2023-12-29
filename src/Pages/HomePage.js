@@ -1,10 +1,9 @@
 import "../App.css";
 import Recipe from "./Recipe";
-
-import Navbar from "../components/Navbar";
 import mainLogo from "../components/icon.png";
 import { useRecipe } from "../context/recipeContext";
-export default function HomePage() {
+import { memo } from "react";
+function HomePage() {
   const {
     myStyle,
     getSearch,
@@ -17,6 +16,7 @@ export default function HomePage() {
     cardStyle,
     showMoreItems,
   } = useRecipe();
+
   return (
     <div className="App">
       <img
@@ -79,3 +79,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default memo(HomePage);

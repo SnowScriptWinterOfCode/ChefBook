@@ -1,5 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function Contact() {
+function Contact() {
   return <div>This Contact page</div>;
 }
+
+export default memo(Contact);

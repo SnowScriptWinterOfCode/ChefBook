@@ -1,5 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function Login() {
+function Login() {
   return <div>Login</div>;
 }
+
+export default memo(Login);
