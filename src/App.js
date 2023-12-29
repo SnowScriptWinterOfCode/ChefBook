@@ -47,7 +47,7 @@ function App() {
 
   const [mode, setMode] = useState("light");
   const [myStyle, setStyle] = useState({
-    color: "black",
+    color: "rgb(242, 198, 140)",
   });
   const [cardStyle, setCard] = useState({
     display: "inline-block",
