@@ -1,0 +1,19 @@
+.maincontainer {
+  background-color: rgb(1, 13, 1);
+  height: 90vh;
+}
+
+.card {
+  border: 2px solid black;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  height: 60vh;
+  background-color: rgb(182, 233, 182);
+  width: 60vh;
+  display: flex;
+  justify-content: center;
+  padding-left: 3.6rem;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+}

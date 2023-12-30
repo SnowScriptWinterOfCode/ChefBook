@@ -1,9 +1,5 @@
 import React, { memo } from "react";
 import styles from "./About.module.css";
-import { FaInstagramSquare } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { MdOutlineAlternateEmail } from "react-icons/md";
-import { FaFacebook } from "react-icons/fa";
 
 function About() {
   return (
