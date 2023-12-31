@@ -114,26 +114,28 @@ export default function Home() {
             Tasty Tips
           </h1>
           <form onSubmit={getSearch} className="search-form">
-            <input
-              className="search-bar"
-              type="text"
-              value={search}
-              onChange={handleSearch}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  setSearch(e.target.value);
-                  // console.log("search: ", e.target.value)
-                }
-              }}
-            ></input>
-            <button className="search-btn" type="submit">
-              Search
-            </button>
+            <div className="search-container">
+              <input
+                className="search-bar"
+                type="text"
+                value={search}
+                onChange={handleSearch}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    setSearch(e.target.value);
+                    // console.log("search: ", e.target.value)
+                  }
+                }}
+                ></input>
+              <button className="search-btn" type="submit">
+                Search
+              </button>
+              </div>
           </form>
 
-          <div class="form-check form-switch">
+          <div className="form-check form-switch">
             <input
-              class="form-check-input ms-5"
+              className="form-check-input ms-5"
               type="checkbox"
               role="switch"
               id="flexSwitchCheckDefault"
