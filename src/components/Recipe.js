@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { nanoid } from "nanoid"
+import { faStar, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+
 
 
 export default function Recipe(props) {
@@ -205,8 +207,33 @@ export default function Recipe(props) {
     }
   
   }
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  // Effect to add scroll event listener and update showScrollButton state
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      setShowScrollButton(scrollY > 500);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
+     <div className={`scroll-up-btn ${showScrollButton ? "show" : ""}`} onClick={scrollToTop}>
+     <FontAwesomeIcon icon={faArrowUp} className="scroll-top-icon" onClick={scrollToTop} />
+        </div>
       <div className="card my-4 mx-3" style={props.cardStyle}>
         <img
           src={props.img}
