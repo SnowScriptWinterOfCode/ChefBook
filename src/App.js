@@ -53,7 +53,7 @@ function App() {
     marginLeft: 100,
     marginTop: 5,
     marginRight: 5,
-    backgroundColor: "#4e6c50",
+    backgroundColor: "#9e2a2b",
   });
   /*const[imageStyle,setImage]=useState({
     height:200
@@ -88,8 +88,8 @@ function App() {
       });
       setCard({
         display: "inline-block",
-        /* borderWidth:2,
-         borderStyle:"solid",*/
+        borderWidth:2,
+         borderStyle:"solid",
         backgroundColor: "#4e6c50",
         width: 300,
         marginLeft: 100,

@@ -230,7 +230,7 @@ export default function Recipe(props) {
             rel="noopener noreferrer"
             className="btn btn-primary see-recipe-btn"
           >
-            See the recipe
+            Let's cook this !
           </a>
           <div class="stars">
           <FontAwesomeIcon icon={faStar} class="star" onClick={StarClicked} style={starStyle1} id="1"/>

@@ -30,16 +30,17 @@
   transition: 0.5s;
 }
 .search-bar:focus {
-  outline: 5px solid #4B3100;
+  outline: 2px solid #7c776e;
+  border-radius: 1 rem;;
 }
 .search-form:hover {
   transform: scale(1.1);
 }
 .search-btn:hover {
-  background: rgb(255, 238, 170);
+  background: rgb(248, 160, 28);
 }
 .search-btn {
-  background: #4B3100;
+  background: #9e2a2b;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -71,6 +72,7 @@
 }
 .card {
   transition: 0.3s;
+  border-radius: 2rem;
 }
 .card:hover {
   transform: scale(1.1);
@@ -78,16 +80,22 @@
 .card-body {
   outline: none;
   margin: 0;
-  background-color: #4e6c50;
+  background-color: #9e2a2b;
+  border-radius: 2rem;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  
 }
 
 .see-recipe-btn {
   width: 265px;
   align-items: center;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   transition: 0.3s;
-  background-color: #B193AF;
+  background: linear-gradient(to right,#8a5a44,#b07d62,#deab90);
+  /*background-color: #B193AF;*/
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
   
 }
 .see-recipe-btn:hover {
@@ -96,13 +104,25 @@
 }
 
 .loadMoreButton {
+  background-image: linear-gradient(to right, #0575E6 0%, #021B79  51%, #0575E6  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
   border-radius: 10px;
-  height:60px;
-  width: 200px;
-  background-color: #4B3100;
-  color: white;
-  border-color: #4B3100;
-  font-size: medium;
+  display: block;
+  /* Add a slightly darker box shadow to the bottom right */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.loadMoreButton:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 html,
@@ -117,6 +137,19 @@ body {
     align-items: center;
     padding: 20px;
     margin-top: 50px;
+}
+
+.card-img-top{
+  border-radius: 2rem;
+  padding: 0.7rem;
+  padding-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.card-img-top:hover{
+  transform: scale(1.05);
+  border-radius: 2.3rem;
+
 }
 
 
