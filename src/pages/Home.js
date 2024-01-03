@@ -4,15 +4,17 @@ import Navbar from "../components/Navbar";
 import mainLogo from "../components/icon.png";
 import FilterModal from "../components/FilterModal";
 import "../App.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Home() {
-  const [visible, setVisible] = useState(3);
-  const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("bread");
-  const [mode, setMode] = useState("light");
-  const [filterModalOpen, setFilterModalOpen] = useState(false);
-  const [selectedFilters, setSelectedFilters] = useState({});
+
+    const [visible, setVisible] = useState(3);
+    const [loading, setLoading] = useState(false);
+    const [recipes, setRecipes] = useState([]);
+    const [query, setQuery] = useState("bread");
+    const [mode, setMode] = useState("light");
+    const [filterModalOpen, setFilterModalOpen] = useState(false);
+    const [selectedFilters, setSelectedFilters] = useState({});
 
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 3);
@@ -21,8 +23,10 @@ export default function Home() {
   const APP_ID = "d7811cd0";
   const APP_KEY = "3baec572c48af715772e8deac52d7572";
 
+  useEffect(() => {
   const getRecipes = () => {
-    let apiUrl = `https://api.edamam.com/api/recipes/v2?app_id=${APP_ID}&app_key=${APP_KEY}&type=public&q=${query}`;
+    setLoading(true);
+     let apiUrl = `https://api.edamam.com/api/recipes/v2?app_id=${APP_ID}&app_key=${APP_KEY}&type=public&q=${query}`;
 
     //console.log("selectedFilters: ", selectedFilters);
     // Check if there are selected filters
@@ -39,21 +43,26 @@ export default function Home() {
   
       apiUrl = `${apiUrl}&${queryString}`;
     }
-
-    //console.log("apiUrl: ", apiUrl);
-  
     fetch(apiUrl)
-      .then((response) => response.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((data) => {
         setRecipes(data.hits);
+        //console.log(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching recipes:", error);
+        setLoading(false);
       });
   };
-  
-
-  useEffect(() => {
     getRecipes();
-  }, [query, selectedFilters]);
-
+  }, [query]);
+  
+  const [search, setSearch] = useState("");
+    //console.log("apiUrl: ", apiUrl);
+  
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
@@ -122,6 +131,7 @@ export default function Home() {
       <>
           <div className={`App ${mode === "light" ? "light-mode" : "dark-mode"}`}>
         <Navbar />
+        {loading && <LoadingSpinner />}
           <img
             alt=""
             src={mainLogo}
