@@ -3,9 +3,13 @@ import Recipe from "../components/Recipe";
 import Navbar from "../components/Navbar";
 import mainLogo from "../components/icon.png";
 import "../App.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Home() {
     const [visible, setVisible] = useState(3);
+    const [loading, setLoading] = useState(false);
+    const [recipes, setRecipes] = useState([]);
+    const [query, setQuery] = useState("bread");
 
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 3);
@@ -13,7 +17,9 @@ export default function Home() {
   const APP_ID = "d7811cd0";
   const APP_KEY = "3baec572c48af715772e8deac52d7572";
 
+  useEffect(() => {
   const getRecipes = () => {
+    setLoading(true);
     fetch(
       `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
     )
@@ -23,17 +29,17 @@ export default function Home() {
       .then((data) => {
         setRecipes(data.hits);
         //console.log(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching recipes:", error);
+        setLoading(false);
       });
   };
-
-  const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("bread");
-
-  useEffect(() => {
     getRecipes();
   }, [query]);
-
+  
+  const [search, setSearch] = useState("");
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
@@ -102,6 +108,7 @@ export default function Home() {
     return (
         <>
         <Navbar />
+        {loading && <LoadingSpinner />}
           <img
             alt=""
             src={mainLogo}
