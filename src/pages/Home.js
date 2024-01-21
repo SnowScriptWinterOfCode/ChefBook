@@ -3,6 +3,7 @@ import Recipe from "../components/Recipe";
 import Navbar from "../components/Navbar";
 import mainLogo from "../components/icon.png";
 import FilterModal from "../components/FilterModal";
+import Review from "../components/Review/Review";
 import "../App.css";
 
 export default function Home() {
@@ -192,6 +193,9 @@ export default function Home() {
               Load More Recipes
             </button>
             </div>
+          </div>
+          <div className="rev">
+            <Review></Review>
           </div>
         </>
     )
