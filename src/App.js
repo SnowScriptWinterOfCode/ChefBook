@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/tasty-tips" element={<Home />} />
           <Route exact path="/contactus" element={<ContactUs />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
