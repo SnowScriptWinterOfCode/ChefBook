@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Recipe from "../components/Recipe";
 import Navbar from "../components/Navbar";
+import Nav from "react-bootstrap/Nav";
 import mainLogo from "../components/icon.png";
 import FilterModal from "../components/FilterModal";
 import Review from "../components/Review/Review";
@@ -37,19 +38,18 @@ export default function Home() {
           }
         })
         .join("&");
-  
+
       apiUrl = `${apiUrl}&${queryString}`;
     }
 
     //console.log("apiUrl: ", apiUrl);
-  
+
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         setRecipes(data.hits);
       });
   };
-  
 
   useEffect(() => {
     getRecipes();
@@ -67,7 +67,6 @@ export default function Home() {
 
   const [myStyle, setStyle] = useState({
     color: "rgb(242, 198, 140)",
-    
   });
   const handleMouseEnter = () => {
     setStyle({
@@ -104,7 +103,7 @@ export default function Home() {
       ? "radial-gradient(black,black,black)"
       : "linear-gradient(to right, #aa8b56 0%, #f0ebce 100%)";
   };
-  
+
   const openFilterModal = () => {
     setFilterModalOpen(true);
   };
@@ -117,86 +116,94 @@ export default function Home() {
     setSelectedFilters(filters);
     setFilterModalOpen(false);
   };
-    
 
-    return (
-      <>
-          <div className={`App ${mode === "light" ? "light-mode" : "dark-mode"}`}>
+  return (
+    <>
+      <div className={`App ${mode === "light" ? "light-mode" : "dark-mode"}`}>
         <Navbar />
-          <img
-            alt=""
-            src={mainLogo}
-            width="100"
-            height="100"
-            className="logo"
-            text-align="center"
-          />
-          <h1 className="heading" style={myStyle} onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
-            Tasty Tips
-          </h1>
-          <form onSubmit={getSearch} className="search-form">
-            <input
-              className="search-bar"
-              type="text"
-              value={search}
-              onChange={handleSearch}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  setSearch(e.target.value);
-                  // console.log("search: ", e.target.value)
-                }
-              }}
-            ></input>
-            <button className="search-btn" type="submit">
-              Search
-            </button>
-            <button className="filter-btn" onClick={openFilterModal}>
-               Filter
-            </button>
-            </form>
-            
-            <FilterModal isOpen={filterModalOpen} onClose={closeFilterModal} onFilterApply={applyFilters} />
+        <img
+          alt=""
+          src={mainLogo}
+          width="100"
+          height="100"
+          className="logo"
+          text-align="center"
+        />
+        <h1
+          className="heading"
+          style={myStyle}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          Tasty Tips
+        </h1>
+        <form onSubmit={getSearch} className="search-form">
+          <input
+            className="search-bar"
+            type="text"
+            value={search}
+            onChange={handleSearch}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setSearch(e.target.value);
+                // console.log("search: ", e.target.value)
+              }
+            }}
+          ></input>
+          <button className="search-btn" type="submit">
+            Search
+          </button>
+          <button className="filter-btn" onClick={openFilterModal}>
+            Filter
+          </button>
+        </form>
 
-          <div class="form-check form-switch">
-            <input
-              className="form-check-input ms-5"
-              type="checkbox"
-              role="switch"
-              id="flexSwitchCheckDefault"
-              onClick={toggleMode}
-            ></input>
-          </div>
-          <div className="container">
-            {recipes.slice(0, visible).map((r) => (
-              <Recipe
-                key={r.recipe.url}
-                title={r.recipe.label}
-                calories={r.recipe.calories}
-                img={r.recipe.images.REGULAR.url}
-                url={r.recipe.url}
-                ingredients={r.recipe.ingredients}
-                diet={r.recipe.dietLabels}
-                health={r.recipe.healthLabels}
-                cuisineType={r.recipe.cuisineType}
-                mealType={r.recipe.mealType}
-                dishType={r.recipe.dishType}
-                time={r.recipe.totalTime}
-                tags={r.recipe.tags}
-                myStyle={myStyle}
-                cardStyle={cardStyle}
-              />
-            ))}
-          </div>
-          <div className="button-container">
-            <button className="loadMoreButton" onClick={showMoreItems}>
-              Load More Recipes
-            </button>
-            </div>
-          </div>
-          <div className="rev">
-            <Review></Review>
-          </div>
-        </>
-    )
+        <FilterModal
+          isOpen={filterModalOpen}
+          onClose={closeFilterModal}
+          onFilterApply={applyFilters}
+        />
+
+        <div class="form-check form-switch">
+          <input
+            className="form-check-input ms-5"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            onClick={toggleMode}
+          ></input>
+        </div>
+        <div className="container">
+          {recipes.slice(0, visible).map((r) => (
+            <Recipe
+              key={r.recipe.url}
+              title={r.recipe.label}
+              calories={r.recipe.calories}
+              img={r.recipe.images.REGULAR.url}
+              url={r.recipe.url}
+              ingredients={r.recipe.ingredients}
+              diet={r.recipe.dietLabels}
+              health={r.recipe.healthLabels}
+              cuisineType={r.recipe.cuisineType}
+              mealType={r.recipe.mealType}
+              dishType={r.recipe.dishType}
+              time={r.recipe.totalTime}
+              tags={r.recipe.tags}
+              myStyle={myStyle}
+              cardStyle={cardStyle}
+            />
+          ))}
+        </div>
+        <div className="button-container">
+          <button className="loadMoreButton" onClick={showMoreItems}>
+            Load More Recipes
+          </button>
+        </div>
+      </div>
+      <div className="rev">
+        <Review></Review>
+      </div>
+      
+    </>
+  );
 }
